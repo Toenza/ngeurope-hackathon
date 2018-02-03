@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -39,21 +40,16 @@ export class GetAccessTokenService {
     url += '&client_id=' + encodeURIComponent(client_id);
     url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
 
-    console.log('redirecting to ' + url);
     window.location.href = url;
   }
 
-  public getUserRecommendations(accessToken: string): void {
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`);
+  public getUserRecommendations(): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${this.accessToken}`);
 
-    this.httpClient.get<any>('https://api.spotify.com/v1/me',
+    return this.httpClient.get<any>('https://api.spotify.com/v1/me',
       {
         headers
-      }).subscribe(
-      data => {
-        console.log(data);
-      }
-      );
+      });
   }
 
 }

@@ -15,7 +15,9 @@ export class SelectAlbum implements Action {
 }
 export class LoadAlbumsSuccess implements Action {
   readonly type = LOAD_ALBUMS_SUCCESS;
-  constructor(public payload: Album[]) {}
+  constructor(public payload: Album[]) {
+    console.log(payload);
+  }
 }
 export class LoadAlbumsFail implements Action {
   readonly type = LOAD_ALBUMS_FAIL;
