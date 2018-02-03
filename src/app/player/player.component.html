@@ -1,1 +1,26 @@
-<p>Player component works !! Yay</p>
+<ng-container *ngIf="player$ && (player$ | async) as player">
+  <ng-container *ngIf="player.currentSong">
+    <mat-card>
+      <div class="player-info">
+        <div class="song-info">
+          <mat-card-title>
+            {{player.currentSong.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{player.currentSong.subtitle}}
+          </mat-card-subtitle>
+        </div>
+        <div class="song-actions">
+          <span>{{player.currentSong.description}}</span>
+          <button mat-fab color="primary">
+            <mat-icon>{{player.playing ? 'play_arrow' : 'pause'}}</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-card-content>
+        <mat-progress-bar mode="determinate" [value]="player.currentSecond" [bufferValue]="player.currentSong.duration">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</ng-container>

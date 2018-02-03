@@ -21,7 +21,9 @@ import {
   MatToolbarModule,
   MatSidenavModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatProgressBarModule,
+  MatCardModule
 } from "@angular/material";
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
@@ -52,4 +54,4 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

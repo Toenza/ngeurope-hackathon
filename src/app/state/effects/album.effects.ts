@@ -8,7 +8,7 @@ const albumsMock: Album[] = [
   {
     description: "album description",
     title: "album tilte",
-    tracklist: [{ title: "First song" }],
+    tracklist: [{ title: "First song", duration: 204 }],
     duration: 105,
     id: "0"
   }
