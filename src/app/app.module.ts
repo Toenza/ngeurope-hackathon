@@ -1,6 +1,9 @@
-import { BrowserModule } from "@angular/platform-browser";
+import { GetAccessTokenService } from './get-access-token.service';
+
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { AppComponent } from "./app.component";
@@ -47,9 +50,10 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [GetAccessTokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
