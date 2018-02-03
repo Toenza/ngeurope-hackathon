@@ -1,4 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 
 import { ServiceWorkerModule } from "@angular/service-worker";
@@ -16,6 +17,12 @@ import { PlayerModule } from "./player/player.module";
 import { RouterModule } from "@angular/router";
 import { reducers } from "./state/reducers";
 import { PlayerEffects } from "./state/effects";
+import {
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatButtonModule
+} from "@angular/material";
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -25,6 +32,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register("/ngsw-worker.js", {
       enabled: environment.production
     }),
@@ -35,7 +43,11 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     RouterModule.forRoot([
       { path: "album", loadChildren: "./album/album.module#AlbumModule" },
       { path: "", pathMatch: "full", redirectTo: "album" }
-    ])
+    ]),
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
