@@ -1,3 +1,6 @@
+import { MatIconModule, MatExpansionModule, MatListModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Route } from "@angular/router";
@@ -11,7 +14,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), MatCardModule, MatButtonModule, MatIconModule, MatExpansionModule, MatListModule],
   declarations: [AlbumComponent, AlbumDetailComponent]
 })
-export class AlbumModule {}
+export class AlbumModule { }

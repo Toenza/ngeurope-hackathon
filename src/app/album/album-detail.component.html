@@ -1,0 +1,20 @@
+<mat-expansion-panel *ngIf="album">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{album.title}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{album.description}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-list>
+    <mat-list-item *ngFor="let song of album.tracklist" class="song-item">
+      <span>
+        {{song.title}}
+      </span>
+      <button mat-mini-fab class="song-play-action">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</mat-expansion-panel>
