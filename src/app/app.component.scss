@@ -41,7 +41,20 @@ app-root {
   overflow: auto;
   display: flex;
 
-  mat-drawer-container {
+  .spotify-container {
+    flex: 1;
+
+    mat-drawer-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .spotify-sidenav {
+    min-width: 300px;
+  }
+
+  .app-content {
     flex: 1;
   }
 }
