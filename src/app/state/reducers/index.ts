@@ -15,3 +15,7 @@ export const reducers: ActionReducerMap<State> = {
 
 export const getAlbumsState = (state: State) => state.albums;
 export const getAlbums = createSelector(getAlbumsState, fromAlbums.getAlbums);
+export const getSelectedAlbum = createSelector(
+  getAlbumsState,
+  fromAlbums.getSelectedAlbum
+);

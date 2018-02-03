@@ -9,7 +9,7 @@ import { LoadAlbums } from "../state/actions";
   selector: "app-album",
   template: `<p> Album page</p>
   <ul *ngFor="let album of albums$ | async">
-    <li>{{ album.title }}</li>
+    <li ><a [routerLink]="['/album', album.id]">{{ album.title }}</a></li>
   </ul>
   `
 })
