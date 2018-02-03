@@ -8,7 +8,16 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",
+    "serve-prod-ngsw": "npm run build-prod-ngsw && npm run http-server dist -p 8080",
+    "ngsw-copy-win": "copy './node_modules/@angular/service-worker/ngsw-worker.js' './dist/'",
+    "build-prod-ngsw-win": "ng build --prod && npm run ngsw-config && npm run ngsw-copy-win",
+    "serve-prod-ngsw-win": "npm run build-prod-ngsw-win && npm run http-server dist -p 8080",
+    "cp": "copy",
+    "http-server": "http-server"
   },
   "private": true,
   "dependencies": {
