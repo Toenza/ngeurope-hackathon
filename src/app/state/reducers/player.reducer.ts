@@ -5,11 +5,13 @@ export interface PlayerState {
   playing: boolean;
   currentSong: Song;
   volume: number;
+  currentSecond: number;
 }
 export const initialState: PlayerState = {
   playing: false,
   currentSong: null,
-  volume: 1
+  volume: 1,
+  currentSecond: 0
 };
 
 export function playerReducer(
@@ -18,7 +20,7 @@ export function playerReducer(
 ): PlayerState {
   switch (action.type) {
     case PLAY: {
-      return { ...state, playing: true, currentSong: action.payload };
+      return { ...state, playing: true, currentSong: action.payload, currentSecond: 0 };
     }
   }
   return state;

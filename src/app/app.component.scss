@@ -38,7 +38,7 @@ body {
 app-root {
   position: relative;
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
 
   .spotify-container {
@@ -55,6 +55,13 @@ app-root {
   }
 
   .app-content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
+
+    .app-current-page {
+      flex: 1;
+      overflow: auto;
+    }
   }
 }
