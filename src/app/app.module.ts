@@ -16,7 +16,7 @@ import { storeFreeze } from "ngrx-store-freeze";
 import { PlayerModule } from "./player/player.module";
 import { RouterModule } from "@angular/router";
 import { reducers } from "./state/reducers";
-import { PlayerEffects } from "./state/effects";
+import { PlayerEffects, AlbumEffects } from "./state/effects";
 import {
   MatToolbarModule,
   MatSidenavModule,
@@ -39,7 +39,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
       enabled: environment.production
     }),
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([PlayerEffects]),
+    EffectsModule.forRoot([PlayerEffects, AlbumEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     PlayerModule,
     RouterModule.forRoot([
