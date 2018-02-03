@@ -1,3 +1,4 @@
+import { Album } from './../../models/album.model';
 import { Observable } from 'rxjs/Observable';
 import { LoadAlbumsFail } from './../actions/album.actions';
 import { GetAccessTokenService } from './../../get-access-token.service';
@@ -6,7 +7,6 @@ import { Actions, Effect } from "@ngrx/effects";
 import { LOAD_ALBUMS, LoadAlbumsSuccess } from "../actions";
 import { map, switchMap, catchError } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
-import { Album } from "../../models/album.model";
 
 const albumsMock: Album[] = [
   {
@@ -23,13 +23,24 @@ export class AlbumEffects {
   loadAlbums$ = this.actions$
     .ofType(LOAD_ALBUMS)
     .pipe(
-      switchMap(() => {
-        return this.tokenService.getUserRecommendations()
-        .pipe(
-          catchError(e => of(new LoadAlbumsFail(e)))
-        )
-      }),
-      map((al) => new LoadAlbumsSuccess(al)));
+    switchMap(() => this.tokenService.getUserRecommendations()),
+    map(al => this.translateAlbum(al)),
+    map((al) => new LoadAlbumsSuccess(al)),
+    catchError(e => of(new LoadAlbumsFail(e)))
+    );
 
-  constructor(private actions$: Actions, private tokenService: GetAccessTokenService) {}
+  constructor(private actions$: Actions, private tokenService: GetAccessTokenService) { }
+
+  translateAlbum(al: any): Album[] {
+    return al.items.map(i => {
+      return {
+        title: i.album.name,
+        description: i.album.label,
+        duration: 999,
+        tracklist: i.album.tracks.items.map(v => ({ title: v.name, duration: 999, preview_url: v.preview_url })),
+        id: i.album.id
+      };
+    });
+  }
 }
+

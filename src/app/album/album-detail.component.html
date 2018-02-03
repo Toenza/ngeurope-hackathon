@@ -1,6 +1,6 @@
 <mat-expansion-panel *ngIf="album">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
+  <mat-expansion-panel-header collapsedHeight="75px">
+    <mat-panel-title style="">
       {{album.title}}
     </mat-panel-title>
     <mat-panel-description>
@@ -12,9 +12,11 @@
       <span>
         {{song.title}}
       </span>
-      <button mat-mini-fab class="song-play-action">
+      <button mat-mini-fab class="song-play-action" (click)="elRef && elRef.nativeElement && elRef.nativeElement.play && elRef.nativeElement.play()">
         <mat-icon>play_arrow</mat-icon>
       </button>
+      <audio #elRef [src]="song.preview_url" type="audio/mpeg"></audio>
+      <!-- {{elRef ? elRef.nativeElement.play : 't'}} -->
     </mat-list-item>
   </mat-list>
 </mat-expansion-panel>

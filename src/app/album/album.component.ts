@@ -7,7 +7,7 @@ import { LoadAlbums } from "../state/actions";
 
 @Component({
   selector: "app-album",
-  template: `<p> Album page</p>
+  template: `<p style="text-align: center; font-size: 22px; font-weight: bold; padding: 15px;"> My albums </p>
   <ng-container *ngFor="let album of albums$ | async">
     <app-album-detail [album]="album"></app-album-detail>
   </ng-container>
