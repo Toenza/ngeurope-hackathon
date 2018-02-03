@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { PlayerModule } from './player/player.module';
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
@@ -32,6 +33,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    PlayerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
