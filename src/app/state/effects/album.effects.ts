@@ -10,6 +10,7 @@ const albumsMock: Album[] = [
     title: "album tilte",
     tracklist: [{ title: "First song", duration: 204 }],
     duration: 105,
+    id: "0"
   }
 ];
 @Injectable()
