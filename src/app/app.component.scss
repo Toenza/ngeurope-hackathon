@@ -38,10 +38,30 @@ body {
 app-root {
   position: relative;
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
 
-  mat-drawer-container {
+  .spotify-container {
     flex: 1;
+
+    mat-drawer-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .spotify-sidenav {
+    min-width: 300px;
+  }
+
+  .app-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .app-current-page {
+      flex: 1;
+      overflow: auto;
+    }
   }
 }

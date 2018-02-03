@@ -1,0 +1,21 @@
+app-player {
+  min-height: 85px;
+
+  .mat-card {
+    padding: 0;
+  }
+
+  .player-info {
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .song-info {
+    margin-right: auto;
+  }
+
+  .song-actions {
+    margin-left: auto;
+  }
+}
