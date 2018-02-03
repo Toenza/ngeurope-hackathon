@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { PlayerModule } from './player/player.module';
+import { RouterModule } from '@angular/router';
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
@@ -34,6 +35,10 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     PlayerModule,
+    RouterModule.forRoot([
+      { path: 'album', loadChildren: './album/album.module#AlbumModule' },
+      { path: '', pathMatch: 'full', redirectTo: 'album' }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
