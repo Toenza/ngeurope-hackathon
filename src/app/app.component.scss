@@ -26,4 +26,22 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 body {
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: 0;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+app-root {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+
+  mat-drawer-container {
+    flex: 1;
+  }
 }
